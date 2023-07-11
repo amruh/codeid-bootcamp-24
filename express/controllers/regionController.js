@@ -40,7 +40,7 @@ module.exports.update = async (req, res) => {
     res.send(result.rows);
 }
 
-module.exports.delete = async (req, res) => {
+module.exports.delete = async (req, res) => { 
     const { id } = req.params;
     const query = {
         text: 'delete from regions where region_id = $1',
