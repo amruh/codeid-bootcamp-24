@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const express = require('express');
+const cors = require('cors');
 
 // routes
 const regions = require('../routes/regions');
@@ -17,6 +18,7 @@ const port = process.env.PORT || 3001;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (_,res) => {
     res.send('homepages')
