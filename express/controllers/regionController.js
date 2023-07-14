@@ -19,12 +19,12 @@ module.exports.getById = async (req, res) => {
 module.exports.post = async (req, res) => {
     const { name } = req.body;
     const query = {
-        text: 'insert into regions (region_name) values ($1)',
+        text: 'insert into regions (region_name) values ($1) returning region_id, region_name',
         values: [name]
     }
 
     const result = await pool.query(query);
-    res.send(result.rows)
+    res.send(result.rows[0])
 }
 
 module.exports.update = async (req, res) => {
@@ -43,10 +43,10 @@ module.exports.update = async (req, res) => {
 module.exports.delete = async (req, res) => { 
     const { id } = req.params;
     const query = {
-        text: 'delete from regions where region_id = $1',
+        text: 'delete from regions where region_id = $1 returning region_id',
         values: [id]
     }
 
     const result = await pool.query(query);
-    res.send(result.rows);
+    res.send(result.rows[0]);
 }
