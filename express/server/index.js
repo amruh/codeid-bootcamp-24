@@ -33,5 +33,5 @@ app.use('/departments', departments);
 app.use('/countries', countries);
 
 app.listen(port, () => {
-    console.log(`Server start at http://localhost/${port}`);
+    console.log(`Server start at http://localhost:${port}`);
 });
