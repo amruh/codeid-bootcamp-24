@@ -13,7 +13,7 @@ module.exports.getById = async (req, res) => {
     }
 
     const result = await pool.query(query);
-    res.send(result.rows);
+    res.send(result.rows[0]);
 }
 
 module.exports.post = async (req, res) => {
